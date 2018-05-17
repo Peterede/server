@@ -72,6 +72,9 @@ class GroupsControllerTest extends \Test\TestCase {
 		$firstGroup
 			->method('count')
 			->will($this->returnValue(12));
+		$firstGroup
+			->method('countDisabled')
+			->will($this->returnValue(0));
 		$secondGroup = $this->getMockBuilder(Group::class)
 			->disableOriginalConstructor()->getMock();
 		$secondGroup
@@ -83,6 +86,9 @@ class GroupsControllerTest extends \Test\TestCase {
 		$secondGroup
 			->method('count')
 			->will($this->returnValue(25));
+		$secondGroup
+			->method('countDisabled')
+			->will($this->returnValue(0));
 		$thirdGroup = $this->getMockBuilder(Group::class)
 			->disableOriginalConstructor()->getMock();
 		$thirdGroup
@@ -94,6 +100,9 @@ class GroupsControllerTest extends \Test\TestCase {
 		$thirdGroup
 			->method('count')
 			->will($this->returnValue(14));
+		$thirdGroup
+			->method('countDisabled')
+			->will($this->returnValue(0));
 		$fourthGroup = $this->getMockBuilder(Group::class)
 			->disableOriginalConstructor()->getMock();
 		$fourthGroup
@@ -105,6 +114,9 @@ class GroupsControllerTest extends \Test\TestCase {
 		$fourthGroup
 			->method('count')
 			->will($this->returnValue(18));
+		$fourthGroup
+			->method('countDisabled')
+			->will($this->returnValue(0));
 		/** @var \OC\Group\Group[] $groups */
 		$groups = array();
 		$groups[] = $firstGroup;
@@ -132,7 +144,8 @@ class GroupsControllerTest extends \Test\TestCase {
 					0 => array(
 						'id' => 'admin',
 						'name' => 'Admin',
-						'usercount' => 0,//User count disabled 18,
+						'usercount' => 0, //User count disabled 18,
+						'disabled' => 0
 					)
 				),
 				'groups' =>
@@ -140,17 +153,20 @@ class GroupsControllerTest extends \Test\TestCase {
 						0 => array(
 							'id' => 'firstGroup',
 							'name' => 'First group',
-							'usercount' => 0,//User count disabled 12,
+							'usercount' => 0, //User count disabled 12,
+							'disabled' => 0
 						),
 						1 => array(
 							'id' => 'secondGroup',
 							'name' => 'Second group',
-							'usercount' => 0,//User count disabled 25,
+							'usercount' => 0, //User count disabled 25,
+							'disabled' => 0
 						),
 						2 => array(
 							'id' => 'thirdGroup',
 							'name' => 'Third group',
-							'usercount' => 0,//User count disabled 14,
+							'usercount' => 0, //User count disabled 14,
+							'disabled' => 0
 						),
 					)
 				)
@@ -176,6 +192,9 @@ class GroupsControllerTest extends \Test\TestCase {
 		$firstGroup
 			->method('count')
 			->will($this->returnValue(12));
+		$firstGroup
+			->method('countDisabled')
+			->will($this->returnValue(0));
 		$secondGroup = $this->getMockBuilder(Group::class)
 			->disableOriginalConstructor()->getMock();
 		$secondGroup
@@ -187,6 +206,9 @@ class GroupsControllerTest extends \Test\TestCase {
 		$secondGroup
 			->method('count')
 			->will($this->returnValue(25));
+		$secondGroup
+			->method('countDisabled')
+			->will($this->returnValue(0));
 		$thirdGroup = $this->getMockBuilder(Group::class)
 			->disableOriginalConstructor()->getMock();
 		$thirdGroup
@@ -198,6 +220,9 @@ class GroupsControllerTest extends \Test\TestCase {
 		$thirdGroup
 			->method('count')
 			->will($this->returnValue(14));
+		$thirdGroup
+			->method('countDisabled')
+			->will($this->returnValue(0));
 		$fourthGroup = $this->getMockBuilder(Group::class)
 			->disableOriginalConstructor()->getMock();
 		$fourthGroup
@@ -209,6 +234,9 @@ class GroupsControllerTest extends \Test\TestCase {
 		$fourthGroup
 			->method('count')
 			->will($this->returnValue(18));
+		$fourthGroup
+			->method('countDisabled')
+			->will($this->returnValue(0));
 		/** @var \OC\Group\Group[] $groups */
 		$groups = array();
 		$groups[] = $firstGroup;
@@ -238,6 +266,7 @@ class GroupsControllerTest extends \Test\TestCase {
 						'id' => 'admin',
 						'name' => 'Admin',
 						'usercount' => 18,
+						'disabled' => 0
 					)
 				),
 				'groups' =>
@@ -246,16 +275,19 @@ class GroupsControllerTest extends \Test\TestCase {
 							'id' => 'secondGroup',
 							'name' => 'Second group',
 							'usercount' => 25,
+							'disabled' => 0
 						),
 						1 => array(
 							'id' => 'thirdGroup',
 							'name' => 'Third group',
 							'usercount' => 14,
+							'disabled' => 0
 						),
 						2 => array(
 							'id' => 'firstGroup',
 							'name' => 'First group',
 							'usercount' => 12,
+							'disabled' => 0
 						),
 					)
 				)
